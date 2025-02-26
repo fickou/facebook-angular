@@ -1,0 +1,16 @@
+.mg-h{
+    margin-bottom: 2em;
+}
+
+.coul-h{
+    background-color: rgba(114, 114, 179, 0.379);
+}
+
+.error{
+    color: red !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+  }

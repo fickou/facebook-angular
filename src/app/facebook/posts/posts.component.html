@@ -1,0 +1,53 @@
+<div class="row conteneur col">
+    <div class="col-md-3">
+        Mon profil
+    </div>
+    <div class="col-md-5">
+        <div class="profil mb-3">
+            <div class="row col mb-3">
+                <div class="col-md-2">
+                    <img src="friends.png" alt="profil">
+                </div>
+                <div class="col-md-10">
+                    <button type="submit" class="btn">
+                        <table>
+                            <tr *ngFor="let user of listeUsers">
+                                <td>{{user.prenom}}</td>
+                                <td>{{user.nom}}</td>
+                            </tr>
+                        </table>
+                    , à quoi penses-tu ?
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn2">Vidéo en direct</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn2">Photos/Vidéos</button>
+                </div>
+            </div>
+        </div>
+        <div class="publication col-12 mb-3">
+            <button type="submit" class="btn btn2">
+                <div class="col-12 row">
+                    <div class="col-md-2">
+                        <img src="friends.png" alt="publication" >
+                    </div>
+                    <div>
+                        <h5>Créez une histoire à durée limitée</h5>
+                        <h6>Partagez une photo ou écrivez quelque chose.</h6>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div class="post col-12">
+            <div class="">contenu</div>
+            <div>image ou védeo</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        Mes contacts
+    </div>
+</div>

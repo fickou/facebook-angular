@@ -1,0 +1,35 @@
+<div class="row text-white mg-h" style="background-color: rgb(52, 76, 128);">
+    <div class="col-md-7 col-12 mt-h mt-5">
+      <h1 class="fw-bold">Facebook</h1>
+    </div>
+    <form [formGroup]="profilForm" (ngSubmit)="onSubmit()" class="col-md-5 col-12 row">
+      <div class="col-12 row">
+        
+        <div class="col-md-5 col-12">
+          <label for="email" class="form-label">Adresse e-mail ou mobile</label>
+          <input type="email" id="emailCon" class="form-control" formControlName="email">
+          <div *ngIf="profilForm.get('email')?.invalid && profilForm.get('email')?.touched" class="text-danger">
+            {{ profilForm.get('email')?.hasError('required') ? "L'email est requis" : "L'email n'est pas valide" }}
+          </div>
+          <div class="form-check mt-2">
+            <input type="checkbox" id="choix" class="form-check-input">
+            <label for="choix" class="form-check-label">Garder ma session active</label>
+          </div>
+        </div>
+  
+        <div class="col-md-5 col-12">
+          <label for="motPasse" class="form-label">Mot de passe</label>
+          <input type="password" id="motPasse" class="form-control" formControlName="password">
+          <div *ngIf="profilForm.get('password')?.invalid && profilForm.get('password')?.touched" class="text-danger">
+            Le mot de passe est requis.
+          </div>
+          <a href="#" class="text-white d-block mt-2">Mot de passe oublié ?</a>
+        </div>
+  
+        <div class="col-md-2 col-12 mt-h">
+          <button type="submit" class="btn btn-primary fw-bold" [disabled]="isFormInvalid()">Connexion</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  

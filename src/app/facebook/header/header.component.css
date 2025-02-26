@@ -1,0 +1,16 @@
+.mt-h{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.mg-h{
+    margin-bottom: 2em;
+}
+
+.coul-h{
+    background-color: rgba(114, 114, 179, 0.379);
+}
+
+.error{
+    color: red !important;
+}

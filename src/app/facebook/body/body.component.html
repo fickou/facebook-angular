@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-md-7 col-12">
+      <h4>Avec Facebook, partager et rester en contact<br> avec votre entourage.</h4>
+      <img src="/friends.png" alt="image facebook">
+    </div>
+    <div class="col-md-5 col-12">
+      <h1>Inscription</h1>
+      <h4>C'est gratuit (et ça le sera toujours)</h4>
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+        <div class="row mb-2">
+          <div class="col">
+            <input type="text" placeholder="Prénom" class="form-control" formControlName="prenom">
+            <div *ngIf="profileForm.get('prenom')?.invalid && profileForm.get('prenom')?.touched" style="color: red; font-size: 12px;">
+              Prénom requis
+            </div>
+          </div>
+
+          <div class="col">
+            <input type="text" placeholder="Nom de famille" class="form-control" formControlName="nom">
+            <div *ngIf="profileForm.get('nom')?.invalid && profileForm.get('nom')?.touched" style="color: red; font-size: 12px;">
+              Nom requis
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <input type="email" placeholder="Adresse e-mail ou mobile" class="form-control" formControlName="email">
+          <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" style="color: red; font-size: 12px;">
+            L'email est requis et doit être valide.
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <input type="email" placeholder="Confirmer adresse ou le mobile" class="form-control" formControlName="confEmail">
+          <div *ngIf="profileForm.get('confEmail')?.invalid && profileForm.get('confEmail')?.touched" style="color: red; font-size: 12px;">
+            L'email de confirmation est invalide.
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <input type="password" placeholder="Nouveau mot de passe" class="form-control" formControlName="password">
+          <div *ngIf="profileForm.get('password')?.invalid && profileForm.get('password')?.touched" style="color: red; font-size: 12px;">
+            Le mot de passe doit comporter au moins 6 caractères.
+          </div>
+        </div>
+        <h4>Date de naissance</h4>
+        <div class="row col"> 
+            <div class="row mb-2 col-md-7">
+                <div class="col-md-4">
+                    <select id="jour" name="jour" class="form-select form-control" formControlName="jour">
+                    <option value="">Jour</option>
+                    <option *ngFor="let jour of jours" [value]="jour">{{ jour }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="mois" name="mois" class="form-select form-control" formControlName="mois" (change)="onMoisOuAnneeChange()">
+                    <option value="">Mois</option>
+                    <option *ngFor="let mois of mois" [value]="mois.value">{{ mois.nom }}</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <select id="annee" name="annee" class="form-select form-control" formControlName="annee" (change)="onMoisOuAnneeChange()">
+                    <option value="">Année</option>
+                    <option *ngFor="let annee of annees" [value]="annee">{{ annee }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-5"><a href="">Pourquoi indiquer ma date de naissance ?</a></div>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="sexe" id="femme" value="femme" formControlName="sexe">
+          <label class="form-check-label" for="femme">Femme</label>
+        </div>
+        <div class="form-check form-check-inline mb-2">
+          <input class="form-check-input" type="radio" name="sexe" id="homme" value="homme" formControlName="sexe">
+          <label class="form-check-label" for="homme">Homme</label>
+        </div>
+
+        <div class="mb-2">
+          En cliquant sur inscription, vous acceptez nos <a href="#">Conditions</a> <br>et
+          indiquez que vous avez lu notre <a href="#">Politique d'utilisation <br>des données</a>
+          , y compris notre <a href="">Utilisation des cookies.</a> 
+        </div>
+
+        <button type="submit" [disabled]="profileForm.invalid" class="btn btn-primary">Inscription</button>
+      </form>
+    </div>
+  </div>

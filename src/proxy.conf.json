@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "http://localhost/facebookAngular",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

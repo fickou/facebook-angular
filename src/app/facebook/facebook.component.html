@@ -1,0 +1,26 @@
+
+<app-header></app-header>
+    
+<app-body></app-body>
+<table class="table table-success table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Prénom</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Email</th>
+      <th scope="col">Date de naissance</th>
+      <th scope="col">Sexe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of listeUsers">
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.prenom}}</td>
+      <td>{{user.nom}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.date_naissance}}</td>
+      <td>{{user.sexe}}</td>
+    </tr>
+  </tbody>
+</table>
