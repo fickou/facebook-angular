@@ -1,22 +1,23 @@
 <div class="row conteneur col">
     <div class="col-md-3">
-        Mon profil
+        <div class="mb-3">{{userProfile?.prenom}}     {{userProfile?.nom}}</div>
+        <div class="mb-3">ami</div>
+        <div class="mb-3">Ma collecetion</div>
+        <div class="mb-3">Mots clés</div>
+        <div class="mb-3">Film</div>
+        <div class="mb-3">Marché</div>
+        <div class="mb-3">Le dernier mot</div>
+        <button (click)="deconnexion()" class="btn">Decoonexion</button>
     </div>
     <div class="col-md-5">
         <div class="profil mb-3">
             <div class="row col mb-3">
                 <div class="col-md-2">
-                    <img src="friends.png" alt="profil">
+                    <i class="bi bi-person fs-3 text-primary"></i>
                 </div>
                 <div class="col-md-10">
-                    <button type="submit" class="btn">
-                        <table>
-                            <tr *ngFor="let user of listeUsers">
-                                <td>{{user.prenom}}</td>
-                                <td>{{user.nom}}</td>
-                            </tr>
-                        </table>
-                    , à quoi penses-tu ?
+                    <button type="submit" class="btn row" (click)="afficherForm = true" *ngIf="userProfile">
+                    {{userProfile.prenom}}  {{userProfile.nom}}, à quoi penses-tu ?
                     </button>
                 </div>
             </div>
@@ -47,7 +48,46 @@
             <div>image ou védeo</div>
         </div>
     </div>
-    <div class="col-md-3">
-        Mes contacts
+    <div class="col-md-3 pd-20">
+        <h3>Mes contacts</h3>
+        <div *ngIf="listeAmi && listeAmi.length > 0; else noFriends">
+            <div *ngFor="let ami of listeAmi" class="mb-3 contact-item">
+                <i class="bi bi-person"></i>
+                <span class="contact-name">
+                    {{ ami.prenom }} {{ ami.nom }}
+                </span>
+            </div>
+        </div>
+        <ng-template #noFriends>
+            <div class="alert alert-info">
+                Vous n'avez aucun contact pour le moment.
+            </div>
+        </ng-template>
+    
     </div>
 </div>
+
+
+<div class="overlay" *ngIf="afficherForm">
+    <div class="popup">
+      <h3>Créer une publication</h3>
+      <form [formGroup]="FormulairePost" (ngSubmit)="publierPost()">
+        <div class="mb-3">
+          <input type="text" id="titre" class="form-control" placeholder="Titre du post" formControlName="titre">
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" placeholder="Exprimez-vous..." rows="3" formControlName="contenu"></textarea>
+        </div>
+        <div class="mb-3">
+          <div class="drop-zone">
+            <span>Glissez-déposez un fichier ici ou cliquez pour sélectionner</span>
+            <input type="file" class="form-control" #fileInput (change)="ajouterMedia($event)">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100" [disabled]="FormulairePost.invalid">
+          Publier
+        </button>
+      </form>
+      <button (click)="afficherForm = false" class="btn btn-danger mt-2 w-100">Fermer</button>
+    </div>
+  </div>
